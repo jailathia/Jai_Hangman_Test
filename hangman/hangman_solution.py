@@ -87,9 +87,11 @@ class Hangman:
         else:
             # lose one life
             self.num_lives -= 1
-            print(f"The letter {letter} is not in the word.")
+            print(f"Sorry, {letter} is not in the word.")
             print(f"You have {self.num_lives} lives left.")
+            self.hangman_image()
             print(self.word_guessed)
+
 
 
         # TODO 3: Check if the letter is in the word. TIP: You can use the lower() method to convert the letter to lowercase
@@ -133,7 +135,50 @@ class Hangman:
         # TODO 2. It has to be a letter that has not been tried yet. Use the list_letters attribute to check this. If it has been tried, print "{letter} was already tried".
         # TODO 3: If the letter is valid, call the check_letter method
             
-            
+    def hangman_image(self):
+        '''
+        Incrementally adds each part of the hangman image as the player loses a life.
+        '''
+        if self.num_lives == 4:
+            print(" +---+")
+            print(" |   |")
+            print("     |")
+            print("     |")
+            print("     |")
+            print("     |")
+            print("======")
+        elif self.num_lives == 3:
+            print(" +---+")
+            print(" |   |")
+            print(" O   |")
+            print("     |")
+            print("     |")
+            print("     |")
+            print("======")
+        elif self.num_lives == 2:
+            print(" +---+")
+            print(" |   |")
+            print(" O   |")
+            print(" |   |")
+            print("     |")
+            print("     |")
+            print("======")
+        elif self.num_lives == 1:
+            print(" +---+")
+            print(" |   |")
+            print(" O   |")
+            print("/|\  |")
+            print("     |")
+            print("     |")
+            print("======")    
+        elif self.num_lives == 0:
+            print(" +---+")
+            print(" |   |")
+            print(" O   |")
+            print("/|\  |")
+            print("/ \  |")
+            print("     |")
+            print("======")
 
 def play_game(word_list):
     # As an aid, part of the code is already provided:
